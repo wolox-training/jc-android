@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
-        android:name=".example.TrainingCasanovaApplication"
+        android:name=".training.TrainingCasanovaApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".example.ui.example.ExampleActivity"
+            android:name=".training.ui.login.LoginActivity"
             android:screenOrientation="fullSensor"
             android:windowSoftInputMode="adjustResize">
 
@@ -24,10 +24,6 @@
             </intent-filter>
 
         </activity>
-
-        <activity
-            android:name=".example.ui.viewpager.ViewPagerActivity"
-            android:screenOrientation="fullSensor" />
 
     </application>
 

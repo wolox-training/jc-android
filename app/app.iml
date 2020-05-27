@@ -176,7 +176,7 @@
       <library name="Gradle: kaptGeneratedClasses">
         <CLASSES>
           <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/stageDebug" />
-          <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/stageDebugAndroidTest" />
+          <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/productionDebugUnitTest" />
           <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/stageRelease" />
           <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/stageReleaseUnitTest" />
           <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/stageDebugUnitTest" />
@@ -184,7 +184,7 @@
           <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/productionDebugAndroidTest" />
           <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/productionRelease" />
           <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/productionDebug" />
-          <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/productionDebugUnitTest" />
+          <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/stageDebugAndroidTest" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
