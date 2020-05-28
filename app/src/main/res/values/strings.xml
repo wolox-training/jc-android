@@ -1,11 +1,7 @@
 <resources>
-
-    <!-- General -->
-    <string name="training_title">TRAINING_FRAGMENT</string>
-    <string name="training_wolox">WOLOX</string>
-    <string name="training_wolox_phone">0800 123 4567</string>
-    <string name="fragment_training_username">Username</string>
-    <string name="fragment_training_password">Password</string>
-    <string name="fragment_training_login">Login</string>
-
+    <!-- LOGIN -->
+    <string name="login_email"> login_example@domain.com</string>
+    <string name="login_button_login">LOG IN</string>
+    <string name="login_button_sign_up">SIGN UP</string>
+    <string name="login_terms_and_conditions">By joining you agree to our <u>Terms &amp; Conditions</u></string>
 </resources>

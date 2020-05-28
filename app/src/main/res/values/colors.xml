@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Add your application custom colors here -->
-    <!-- Base application colors -->
+    <!-- General colors-->
     <color name="colorPrimary">#1D9BD7</color>
     <color name="colorPrimaryDark">#0960B7</color>
     <color name="colorAccent">#8DC63F</color>
+    <!-- Login colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="green">#8bd62f</color>
+    <color name="green_transparent">#CC8bd62f</color>
+    <color name="blue">#288dd6</color>
+    <color name="blue_transparent">#CC288dd6</color>
 </resources>
