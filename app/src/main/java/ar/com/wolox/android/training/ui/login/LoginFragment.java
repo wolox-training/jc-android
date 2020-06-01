@@ -19,8 +19,6 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
     @BindView(R.id.vLogInEmail) EditText vLogInEmail;
     @BindView(R.id.vLogInPassword) EditText vLogInPassword;
 
-    public static final Integer MIN_CHARACTERS_PASSWORD = 6;
-
     @Override
     public void init() {
         ButterKnife.bind(this, getActivity());
@@ -36,19 +34,7 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements Logi
         vLogInButton.setOnClickListener(new View.OnClickListener() {
             @OnClick
             public void onClick(View v) {
-                if (vLogInEmail.getText().toString().isEmpty() && vLogInPassword.getText().toString().isEmpty()) {
-                    Toast.makeText(requireContext(), "Los campos se encuentran vacíos", Toast.LENGTH_SHORT).show();
-                } else if (vLogInEmail.getText().toString().isEmpty()) {
-                    Toast.makeText(requireContext(), "Ingrese un correo electrónico", Toast.LENGTH_SHORT).show();
-                } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(vLogInEmail.getText().toString()).matches()) {
-                    Toast.makeText(requireContext(), "Ingrese un correo electrónico válido", Toast.LENGTH_SHORT).show();
-                } else if (vLogInPassword.getText().toString().isEmpty()) {
-                    Toast.makeText(requireContext(), "Ingrese una contraseña", Toast.LENGTH_SHORT).show();
-                } else if (vLogInPassword.getText().toString().length() < MIN_CHARACTERS_PASSWORD) {
-                    Toast.makeText(requireContext(), "La contraseña debe tener más de 6 caracteres", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(requireContext(), "Login presionado :)", Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(requireContext(), "Log In presionado :)", Toast.LENGTH_SHORT).show();
             }
         });
 
