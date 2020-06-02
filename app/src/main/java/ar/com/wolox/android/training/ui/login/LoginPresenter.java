@@ -15,8 +15,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         this.userSession = userSession;
     }
 
-    public void onLoginButtonClicked(final String user, final String password) {
+    public void onLoginButtonClicked(final String user) {
         userSession.setUsername(user);
-        userSession.setPassword(password);
     }
 }

@@ -5,10 +5,10 @@
     <color name="colorPrimary">#1D9BD7</color>
     <color name="colorPrimaryDark">#0960B7</color>
     <color name="colorAccent">#8DC63F</color>
-    <!-- Login colors -->
-    <color name="white">#FFFFFF</color>
-    <color name="green">#8bd62f</color>
-    <color name="green_transparent">#CC8bd62f</color>
-    <color name="blue">#288dd6</color>
-    <color name="blue_transparent">#CC288dd6</color>
+    <!-- Login -->
+    <color name="white">@android:color/white</color>
+    <color name="wolox_green">#8bd62f</color>
+    <color name="gradient_logo_green">#CC8bd62f</color>
+    <color name="wolox_blue">#288dd6</color>
+    <color name="gradient_logo_blue">#CC288dd6</color>
 </resources>
