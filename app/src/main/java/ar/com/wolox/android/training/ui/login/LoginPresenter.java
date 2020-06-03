@@ -27,6 +27,6 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
     }
 
     public void onTermsAndConditionsClicked() {
-        this.getView().redirectLink(URL);
+        Objects.requireNonNull(this.getView()).redirectLink(URL);
     }
 }
