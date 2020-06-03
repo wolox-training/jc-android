@@ -7,5 +7,5 @@ public interface ILoginView {
 
     void getHomeView();
 
-    void openTermsAndConditionsUrl(String url);
+    void redirectLink(String url);
 }
