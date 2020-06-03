@@ -2,6 +2,7 @@ package ar.com.wolox.android.training.ui.login;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.widget.TextView;
 
 import ar.com.wolox.android.R;
 import ar.com.wolox.android.training.ui.home.HomeActivity;
@@ -12,6 +13,9 @@ import ar.com.wolox.wolmo.core.fragment.WolmoFragment;
 public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILoginView {
 
     private static LoginFragment instance;
+    private TextView termsConditions;
+    private TextView logInButton;
+    private TextView signUpButton;
 
     public static LoginFragment newInstance() {
         if (instance == null) {
@@ -22,6 +26,9 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
 
     @Override
     public void init() {
+        termsConditions = getView().findViewById(R.id.vTermsConditions);
+        logInButton = getView().findViewById(R.id.vLogInButton);
+        signUpButton = getView().findViewById(R.id.vSignUpButton);
     }
 
     @Override
@@ -31,12 +38,9 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
 
     @Override
     public void setListeners() {
-        getView().findViewById(R.id.vTermsConditions)
-                .setOnClickListener(it -> getPresenter().onTermsAndConditionsClicked());
-        getView().findViewById(R.id.vLogInButton)
-                .setOnClickListener(it -> getPresenter().onLoginButtonClicked());
-        getView().findViewById(R.id.vSignUpButton)
-                .setOnClickListener(it -> getPresenter().onSignupClicked());
+        termsConditions.setOnClickListener(it -> getPresenter().onTermsAndConditionsClicked());
+        logInButton.setOnClickListener(it -> getPresenter().onLoginButtonClicked());
+        signUpButton.setOnClickListener(it -> getPresenter().onSignupClicked());
     }
 
     @Override
