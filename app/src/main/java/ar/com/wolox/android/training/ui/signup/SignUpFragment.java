@@ -23,5 +23,4 @@ public class SignUpFragment extends WolmoFragment<SignUpPresenter> implements IS
     public int layout() {
         return R.layout.fragment_sign_up;
     }
-
 }

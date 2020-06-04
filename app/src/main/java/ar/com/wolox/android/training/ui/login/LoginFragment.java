@@ -44,19 +44,19 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
     }
 
     @Override
-    public void getSignUpView() {
+    public void showSignUpScreen() {
         final Intent intent = new Intent(getActivity(), SignUpActivity.class);
         startActivity(intent);
     }
 
     @Override
-    public void getHomeView() {
+    public void showHomeScreen() {
         final Intent intent = new Intent(getActivity(), HomeActivity.class);
         startActivity(intent);
     }
 
     @Override
-    public void redirectLink(final String url) {
+    public void goToLink(final String url) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
         startActivity(intent);

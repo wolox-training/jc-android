@@ -19,14 +19,14 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
     }
 
     public void onLoginButtonClicked() {
-        Objects.requireNonNull(this.getView()).getHomeView();
+        Objects.requireNonNull(this.getView()).showHomeScreen();
     }
 
     public void onSignupClicked() {
-        Objects.requireNonNull(this.getView()).getSignUpView();
+        Objects.requireNonNull(this.getView()).showSignUpScreen();
     }
 
     public void onTermsAndConditionsClicked() {
-        Objects.requireNonNull(this.getView()).redirectLink(URL);
+        Objects.requireNonNull(this.getView()).goToLink(URL);
     }
 }
