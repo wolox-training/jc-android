@@ -148,5 +148,4 @@ dependencies {
 
     // Guava
     implementation "com.google.guava:guava:29.0-jre"
-    implementation "com.google.guava:guava:29.0-android"
 }

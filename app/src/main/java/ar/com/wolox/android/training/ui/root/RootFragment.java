@@ -24,8 +24,6 @@ public class RootFragment extends WolmoFragment<RootPresenter> implements IRootV
 
     @Override
     public void init() {
-        presenter = getPresenter();
-        presenter.checkUser();
     }
 
     @Override
@@ -44,4 +42,11 @@ public class RootFragment extends WolmoFragment<RootPresenter> implements IRootV
         final Intent intent = new Intent(getActivity(), HomeActivity.class);
         startActivity(intent);
     }
+}
+
+interface IRootView {
+
+    void getLoginView();
+
+    void getHomeView();
 }

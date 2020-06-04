@@ -1,7 +1,5 @@
 package ar.com.wolox.android.training.ui.root;
 
-import com.google.common.base.Strings;
-
 import java.util.Objects;
 
 import javax.inject.Inject;
@@ -21,11 +19,16 @@ public class RootPresenter extends BasePresenter<IRootView> {
         this.userSession = userSession;
     }
 
+    @Override
+    public void onViewAttached() {
+        checkUser();
+    }
+
     public void checkUser() {
-        final String userName = userSession.getUsername();
-        if (Strings.isNullOrEmpty(userName)) {
+        if (userSession.isUserLogged()) {
+            Objects.requireNonNull(this.getView()).getHomeView();
+        } else {
             Objects.requireNonNull(this.getView()).getLoginView();
         }
-        Objects.requireNonNull(this.getView()).getHomeView();
     }
 }
