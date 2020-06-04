@@ -16,6 +16,8 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
     private TextView termsConditions;
     private TextView logInButton;
     private TextView signUpButton;
+    private String userEmail;
+    private String userPassword;
 
     public static LoginFragment newInstance() {
         if (instance == null) {
@@ -29,6 +31,10 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
         termsConditions = getView().findViewById(R.id.vTermsConditions);
         logInButton = getView().findViewById(R.id.vLogInButton);
         signUpButton = getView().findViewById(R.id.vSignUpButton);
+        TextView userEmailText = getView().findViewById(R.id.vLogInEmail);
+        userEmail = userEmailText.getText().toString();
+        TextView userPasswordText = getView().findViewById(R.id.vLogInPassword);
+        userPassword = userPasswordText.getText().toString();
     }
 
     @Override
@@ -39,7 +45,8 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
     @Override
     public void setListeners() {
         termsConditions.setOnClickListener(it -> getPresenter().onTermsAndConditionsClicked());
-        logInButton.setOnClickListener(it -> getPresenter().onLoginButtonClicked());
+        logInButton.setOnClickListener(it -> getPresenter()
+                .onLoginButtonClicked(userEmail, userPassword));
         signUpButton.setOnClickListener(it -> getPresenter().onSignupClicked());
     }
 

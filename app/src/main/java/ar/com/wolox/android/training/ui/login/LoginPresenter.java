@@ -18,7 +18,8 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
         this.userSession = userSession;
     }
 
-    public void onLoginButtonClicked() {
+    public void onLoginButtonClicked(final String email, final String password) {
+        userSession.setUsername(email);
         Objects.requireNonNull(this.getView()).getHomeView();
     }
 

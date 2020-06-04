@@ -4,6 +4,7 @@ import android.app.Application
 import ar.com.wolox.android.training.TrainingCasanovaApplication
 import ar.com.wolox.android.training.ui.home.HomeModule
 import ar.com.wolox.android.training.ui.login.LoginModule
+import ar.com.wolox.android.training.ui.root.RootModule
 import ar.com.wolox.android.training.ui.signup.SignUpModule
 import ar.com.wolox.wolmo.core.di.modules.ContextModule
 import ar.com.wolox.wolmo.core.di.modules.DefaultModule
@@ -17,7 +18,7 @@ import dagger.android.support.AndroidSupportInjectionModule
 @ApplicationScope
 @Component(dependencies = [NetworkingComponent::class],
         modules = [AndroidSupportInjectionModule::class, DefaultModule::class, ContextModule::class,
-            LoginModule::class, SignUpModule::class, HomeModule::class])
+            LoginModule::class, SignUpModule::class, HomeModule::class, RootModule::class])
 interface AppComponent : AndroidInjector<TrainingCasanovaApplication> {
 
     @Component.Builder
