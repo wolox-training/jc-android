@@ -3,7 +3,6 @@ package ar.com.wolox.android.training.ui.login;
 import android.content.Intent;
 import android.net.Uri;
 import android.widget.TextView;
-
 import ar.com.wolox.android.R;
 import ar.com.wolox.android.training.ui.home.HomeActivity;
 import ar.com.wolox.android.training.ui.signup.SignUpActivity;
@@ -12,7 +11,6 @@ import ar.com.wolox.wolmo.core.fragment.WolmoFragment;
 /** My <b>LoginFragment</b>. */
 public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILoginView {
 
-    private static LoginFragment instance;
     private TextView termsConditions;
     private TextView logInButton;
     private TextView signUpButton;
@@ -20,10 +18,7 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
     private TextView userPassword;
 
     public static LoginFragment newInstance() {
-        if (instance == null) {
-            instance = new LoginFragment();
-        }
-        return instance;
+        return new LoginFragment();
     }
 
     @Override
@@ -45,23 +40,21 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
         termsConditions.setOnClickListener(it -> getPresenter().onTermsAndConditionsClicked());
         logInButton.setOnClickListener(it -> getPresenter()
                 .onLoginButtonClicked(userEmail.getText().toString(), userPassword.getText().toString()));
-        signUpButton.setOnClickListener(it -> getPresenter().onSignupClicked());
+        signUpButton.setOnClickListener(it -> getPresenter().onSignUpClicked());
     }
 
     @Override
-    public void getSignUpView() {
-        final Intent intent = new Intent(getActivity(), SignUpActivity.class);
-        startActivity(intent);
+    public void showSignUpScreen() {
+        SignUpActivity.start(this.getContext());
     }
 
     @Override
-    public void getHomeView() {
-        final Intent intent = new Intent(getActivity(), HomeActivity.class);
-        startActivity(intent);
+    public void showHomeScreen() {
+        HomeActivity.start(this.getContext());
     }
 
     @Override
-    public void redirectLink(final String url) {
+    public void goToLink(final String url) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
         startActivity(intent);

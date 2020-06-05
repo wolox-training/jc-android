@@ -1,9 +1,7 @@
 package ar.com.wolox.android.training.ui.login;
 
 import java.util.Objects;
-
 import javax.inject.Inject;
-
 import ar.com.wolox.android.training.utils.UserSession;
 import ar.com.wolox.wolmo.core.presenter.BasePresenter;
 
@@ -20,14 +18,14 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
 
     public void onLoginButtonClicked(final String email, final String password) {
         userSession.setUsername(email);
-        Objects.requireNonNull(this.getView()).getHomeView();
+        Objects.requireNonNull(this.getView()).showHomeScreen();
     }
 
-    public void onSignupClicked() {
-        Objects.requireNonNull(this.getView()).getSignUpView();
+    public void onSignUpClicked() {
+        Objects.requireNonNull(this.getView()).showSignUpScreen();
     }
 
     public void onTermsAndConditionsClicked() {
-        Objects.requireNonNull(this.getView()).redirectLink(URL);
+        Objects.requireNonNull(this.getView()).goToLink(URL);
     }
 }
