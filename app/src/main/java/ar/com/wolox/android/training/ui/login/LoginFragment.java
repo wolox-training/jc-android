@@ -2,6 +2,7 @@ package ar.com.wolox.android.training.ui.login;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.widget.TextView;
 
 import ar.com.wolox.android.R;
@@ -12,16 +13,17 @@ import ar.com.wolox.wolmo.core.fragment.WolmoFragment;
 /** My <b>LoginFragment</b>. */
 public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILoginView {
 
-    private static LoginFragment instance;
+    private static final String ARG_CAUGHT = "loginFragment_caught";
     private TextView termsConditions;
     private TextView logInButton;
     private TextView signUpButton;
 
-    public static LoginFragment newInstance() {
-        if (instance == null) {
-            instance = new LoginFragment();
-        }
-        return instance;
+    public static LoginFragment newInstance(final String caught) {
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_CAUGHT, caught);
+        LoginFragment loginFragment = new LoginFragment();
+        loginFragment.setArguments(args);
+        return loginFragment;
     }
 
     @Override

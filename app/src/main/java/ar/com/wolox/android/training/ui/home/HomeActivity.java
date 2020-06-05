@@ -15,6 +15,6 @@ public class HomeActivity extends WolmoActivity {
 
     @Override
     public void init() {
-        replaceFragment(R.id.vActivityHome, HomeFragment.newInstance());
+        replaceFragment(R.id.vActivityHome, HomeFragment.newInstance("homeActivity"));
     }
 }

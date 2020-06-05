@@ -13,6 +13,6 @@ public class SignUpActivity extends WolmoActivity {
 
     @Override
     public void init() {
-        replaceFragment(R.id.vActivitySignUp, SignUpFragment.newInstance());
+        replaceFragment(R.id.vActivitySignUp, SignUpFragment.newInstance("signUpActivity"));
     }
 }
