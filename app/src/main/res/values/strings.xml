@@ -4,4 +4,10 @@
     <string name="login_button_login">LOG IN</string>
     <string name="login_button_sign_up">SIGN UP</string>
     <string name="login_terms_and_conditions">By joining you agree to our <u>Terms &amp; Conditions</u></string>
+
+    <!-- SIGN UP -->
+    <string name="sign_up_hello_message">SIGN UP - HELLO</string>
+
+    <!-- HOME -->
+    <string name="home_hello_message">WELCOME TO THE WORLD!</string>
 </resources>
