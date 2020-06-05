@@ -59,4 +59,19 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
         intent.setData(Uri.parse(url));
         startActivity(intent);
     }
+
+    @Override
+    public void invalidFormatEmail() {
+        userEmail.setError(getString(R.string.login_error_invalid_format_email));
+    }
+
+    @Override
+    public void invalidEmptyEmail() {
+        userEmail.setError(getString(R.string.login_error_invalid_empty_email));
+    }
+
+    @Override
+    public void invalidEmptyPassword() {
+        userPassword.setError(getString(R.string.login_error_invalid_empty_password));
+    }
 }

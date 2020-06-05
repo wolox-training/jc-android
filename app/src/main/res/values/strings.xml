@@ -4,6 +4,9 @@
     <string name="login_button_login">LOG IN</string>
     <string name="login_button_sign_up">SIGN UP</string>
     <string name="login_terms_and_conditions">By joining you agree to our <u>Terms &amp; Conditions</u></string>
+    <string name="login_error_invalid_format_email"> The email format is invalid</string>
+    <string name="login_error_invalid_empty_email"> The email field cannot be empty</string>
+    <string name="login_error_invalid_empty_password"> The password field cannot be empty</string>
 
     <!-- SIGN UP -->
     <string name="sign_up_hello_message">SIGN UP - HELLO</string>

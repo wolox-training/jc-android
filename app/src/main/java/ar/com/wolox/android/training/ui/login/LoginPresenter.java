@@ -1,5 +1,7 @@
 package ar.com.wolox.android.training.ui.login;
 
+import android.util.Patterns;
+
 import java.util.Objects;
 import javax.inject.Inject;
 import ar.com.wolox.android.training.utils.UserSession;
@@ -16,9 +18,19 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
         this.userSession = userSession;
     }
 
+    /**
+     * My <b>LoginPresenter</b>.
+     * The validation of user credentials. If they are correct, redirect to HomeScreen and save email,
+     *
+     * @param email    User email (cannot be empty and have to respect email pattern)
+     * @param password User password (cannot be empty)
+     */
+
     public void onLoginButtonClicked(final String email, final String password) {
-        userSession.setUsername(email);
-        Objects.requireNonNull(this.getView()).showHomeScreen();
+        if (isEmailValid(email) && isPasswordValid(password)) {
+            userSession.setUsername(email);
+            Objects.requireNonNull(this.getView()).showHomeScreen();
+        }
     }
 
     public void onSignUpClicked() {
@@ -27,5 +39,26 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
 
     public void onTermsAndConditionsClicked() {
         Objects.requireNonNull(this.getView()).goToLink(URL);
+    }
+
+    private Boolean isEmailValid(final String email) {
+        Boolean isValid = Boolean.TRUE;
+        if (email.isEmpty()) {
+            this.getView().invalidEmptyEmail();
+            isValid = Boolean.FALSE;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            this.getView().invalidFormatEmail();
+            isValid = Boolean.FALSE;
+        }
+        return isValid;
+    }
+
+    private Boolean isPasswordValid(final String password) {
+        Boolean isValid = Boolean.TRUE;
+        if (password.isEmpty()) {
+            this.getView().invalidEmptyPassword();
+            isValid = Boolean.FALSE;
+        }
+        return isValid;
     }
 }

@@ -8,4 +8,10 @@ public interface ILoginView {
     void showHomeScreen();
 
     void goToLink(String url);
+
+    void invalidFormatEmail();
+
+    void invalidEmptyEmail();
+
+    void invalidEmptyPassword();
 }
