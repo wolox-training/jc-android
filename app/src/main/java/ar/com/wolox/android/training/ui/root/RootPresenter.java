@@ -26,9 +26,9 @@ public class RootPresenter extends BasePresenter<IRootView> {
 
     public void checkUser() {
         if (userSession.isUserLogged()) {
-            Objects.requireNonNull(this.getView()).getHomeView();
+            Objects.requireNonNull(this.getView()).showHomeScreen();
         } else {
-            Objects.requireNonNull(this.getView()).getLoginView();
+            Objects.requireNonNull(this.getView()).showLoginScreen();
         }
     }
 }

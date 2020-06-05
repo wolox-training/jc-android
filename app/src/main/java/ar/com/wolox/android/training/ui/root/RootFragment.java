@@ -1,25 +1,17 @@
 package ar.com.wolox.android.training.ui.root;
 
-import android.content.Intent;
-
 import ar.com.wolox.android.R;
 import ar.com.wolox.android.training.ui.home.HomeActivity;
 import ar.com.wolox.android.training.ui.login.LoginActivity;
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment;
 
 /**
- * My <b>SignUpFragment</b>.
+ * My <b>RootFragment</b>.
  */
 public class RootFragment extends WolmoFragment<RootPresenter> implements IRootView {
 
-    private static RootFragment instance;
-    private RootPresenter presenter;
-
     public static RootFragment newInstance() {
-        if (instance == null) {
-            instance = new RootFragment();
-        }
-        return instance;
+        return new RootFragment();
     }
 
     @Override
@@ -32,23 +24,19 @@ public class RootFragment extends WolmoFragment<RootPresenter> implements IRootV
     }
 
     @Override
-    public void getLoginView() {
-        final Intent intent = new Intent(getActivity(), LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+    public void showLoginScreen() {
+        RootActivity.start(this.getContext(), LoginActivity.class);
     }
 
     @Override
-    public void getHomeView() {
-        final Intent intent = new Intent(getActivity(), HomeActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+    public void showHomeScreen() {
+        RootActivity.start(this.getContext(), HomeActivity.class);
     }
 }
 
 interface IRootView {
 
-    void getLoginView();
+    void showLoginScreen();
 
-    void getHomeView();
+    void showHomeScreen();
 }

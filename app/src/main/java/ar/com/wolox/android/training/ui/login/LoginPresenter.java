@@ -19,9 +19,8 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
     }
 
     /**
-     * My <b>LoginPresenter</b>.
+     * My <b>onLoginButtonClicked method</b>.
      * The validation of user credentials. If they are correct, redirect to HomeScreen and save email,
-     *
      * @param email    User email (cannot be empty and have to respect email pattern)
      * @param password User password (cannot be empty)
      */
