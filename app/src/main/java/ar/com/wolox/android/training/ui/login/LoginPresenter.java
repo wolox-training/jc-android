@@ -1,9 +1,7 @@
 package ar.com.wolox.android.training.ui.login;
 
 import java.util.Objects;
-
 import javax.inject.Inject;
-
 import ar.com.wolox.android.training.utils.UserSession;
 import ar.com.wolox.wolmo.core.presenter.BasePresenter;
 

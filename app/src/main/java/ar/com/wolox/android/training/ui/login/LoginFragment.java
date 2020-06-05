@@ -3,7 +3,6 @@ package ar.com.wolox.android.training.ui.login;
 import android.content.Intent;
 import android.net.Uri;
 import android.widget.TextView;
-
 import ar.com.wolox.android.R;
 import ar.com.wolox.android.training.ui.home.HomeActivity;
 import ar.com.wolox.android.training.ui.signup.SignUpActivity;

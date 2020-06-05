@@ -2,7 +2,6 @@ package ar.com.wolox.android.training.ui.login;
 
 import android.content.Context;
 import android.content.Intent;
-
 import ar.com.wolox.android.R;
 import ar.com.wolox.wolmo.core.activity.WolmoActivity;
 
