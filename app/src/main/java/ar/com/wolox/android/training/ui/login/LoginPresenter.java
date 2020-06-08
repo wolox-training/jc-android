@@ -73,4 +73,25 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
             error.showError(this.getView());
         }
     }
+
+    private enum LoginErrors {
+
+        INVALID_FORMAT_EMAIL {
+            public void showError(final ILoginView view) {
+                view.invalidFormatEmail();
+            }
+        },
+        EMPTY_EMAIL {
+            public void showError(final ILoginView view) {
+                view.invalidEmptyEmail();
+            }
+        },
+        EMPTY_PASSWORD {
+            public void showError(final ILoginView view) {
+                view.invalidEmptyPassword();
+            }
+        };
+
+        public abstract void showError(ILoginView view);
+    }
 }
