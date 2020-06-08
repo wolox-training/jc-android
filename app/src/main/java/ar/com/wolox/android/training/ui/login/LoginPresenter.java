@@ -2,12 +2,18 @@ package ar.com.wolox.android.training.ui.login;
 
 import android.util.Patterns;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
 import javax.inject.Inject;
+
 import ar.com.wolox.android.training.utils.UserSession;
 import ar.com.wolox.wolmo.core.presenter.BasePresenter;
 
-/** My <b>LoginPresenter</b>. */
+/**
+ * My <b>LoginPresenter</b>.
+ */
 public class LoginPresenter extends BasePresenter<ILoginView> {
 
     private final UserSession userSession;
@@ -21,14 +27,18 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
     /**
      * My <b>onLoginButtonClicked method</b>.
      * The validation of user credentials. If they are correct, redirect to HomeScreen and save email,
+     *
      * @param email    User email (cannot be empty and have to respect email pattern)
      * @param password User password (cannot be empty)
      */
 
     public void onLoginButtonClicked(final String email, final String password) {
-        if (isEmailValid(email) && isPasswordValid(password)) {
+        final List<LoginErrors> errors = getErrors(email, password);
+        if (errors.isEmpty()) {
             userSession.setUsername(email);
             Objects.requireNonNull(this.getView()).showHomeScreen();
+        } else {
+            showErrors(errors);
         }
     }
 
@@ -40,24 +50,27 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
         Objects.requireNonNull(this.getView()).goToLink(URL);
     }
 
-    private Boolean isEmailValid(final String email) {
-        Boolean isValid = Boolean.TRUE;
-        if (email.isEmpty()) {
-            this.getView().invalidEmptyEmail();
-            isValid = Boolean.FALSE;
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            this.getView().invalidFormatEmail();
-            isValid = Boolean.FALSE;
+    private List<LoginErrors> getErrors(final String email, final String password) {
+        List<LoginErrors> errors = new ArrayList<>();
+        final boolean isEmailInvalidFormat = !Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        final boolean isEmailEmpty = email.isEmpty();
+        final boolean isPasswordEmpty = password.isEmpty();
+
+        if (isEmailEmpty) {
+            errors.add(LoginErrors.EMPTY_EMAIL);
+        } else if (isEmailInvalidFormat) {
+            errors.add(LoginErrors.INVALID_FORMAT_EMAIL);
         }
-        return isValid;
+        if (isPasswordEmpty) {
+            errors.add(LoginErrors.EMPTY_PASSWORD);
+        }
+
+        return errors;
     }
 
-    private Boolean isPasswordValid(final String password) {
-        Boolean isValid = Boolean.TRUE;
-        if (password.isEmpty()) {
-            this.getView().invalidEmptyPassword();
-            isValid = Boolean.FALSE;
+    private void showErrors(final List<LoginErrors> errors) {
+        for (LoginErrors error : errors) {
+            error.showError(this.getView());
         }
-        return isValid;
     }
 }
