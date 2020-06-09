@@ -20,5 +20,10 @@ class UserSession @Inject constructor(private val sharedPreferencesManager: Shar
             sharedPreferencesManager.store(Extras.UserLogin.USERNAME, username)
         }
 
+    var userId: Integer? = null
+        get() {
+            return field
+        }
+
     var isUserLogged = username != null
 }

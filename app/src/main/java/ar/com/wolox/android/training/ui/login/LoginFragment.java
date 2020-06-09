@@ -3,6 +3,8 @@ package ar.com.wolox.android.training.ui.login;
 import android.content.Intent;
 import android.net.Uri;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import ar.com.wolox.android.R;
 import ar.com.wolox.android.training.ui.home.HomeActivity;
 import ar.com.wolox.android.training.ui.signup.SignUpActivity;
@@ -73,5 +75,10 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
     @Override
     public void invalidEmptyPassword() {
         userPassword.setError(getString(R.string.login_error_invalid_empty_password));
+    }
+
+    @Override
+    public void invalidUserCredentials() {
+        Toast.makeText(requireContext(), R.string.login_error_invalid_user_credentials, Toast.LENGTH_SHORT).show();
     }
 }
