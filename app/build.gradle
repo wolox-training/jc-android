@@ -145,9 +145,4 @@ dependencies {
     // Android KTX
     implementation "androidx.core:core-ktx:$android_ktx_version"
     implementation "androidx.fragment:fragment-ktx:$android_ktx_version"
-
-    //ButterKnife
-    implementation "com.jakewharton:butterknife:$butterknife"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife"
-    kapt "com.jakewharton:butterknife-compiler:$butterknife"
 }

@@ -14,6 +14,8 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
     private TextView termsConditions;
     private TextView logInButton;
     private TextView signUpButton;
+    private TextView userEmail;
+    private TextView userPassword;
 
     public static LoginFragment newInstance() {
         return new LoginFragment();
@@ -24,6 +26,8 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
         termsConditions = getView().findViewById(R.id.vTermsConditions);
         logInButton = getView().findViewById(R.id.vLogInButton);
         signUpButton = getView().findViewById(R.id.vSignUpButton);
+        userEmail = getView().findViewById(R.id.vLogInEmail);
+        userPassword = getView().findViewById(R.id.vLogInPassword);
     }
 
     @Override
@@ -34,8 +38,9 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
     @Override
     public void setListeners() {
         termsConditions.setOnClickListener(it -> getPresenter().onTermsAndConditionsClicked());
-        logInButton.setOnClickListener(it -> getPresenter().onLoginButtonClicked());
-        signUpButton.setOnClickListener(it -> getPresenter().onSignupClicked());
+        logInButton.setOnClickListener(it -> getPresenter()
+                .onLoginButtonClicked(userEmail.getText().toString(), userPassword.getText().toString()));
+        signUpButton.setOnClickListener(it -> getPresenter().onSignUpClicked());
     }
 
     @Override
@@ -53,5 +58,20 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
         startActivity(intent);
+    }
+
+    @Override
+    public void invalidFormatEmail() {
+        userEmail.setError(getString(R.string.login_error_invalid_format_email));
+    }
+
+    @Override
+    public void invalidEmptyEmail() {
+        userEmail.setError(getString(R.string.login_error_invalid_empty_email));
+    }
+
+    @Override
+    public void invalidEmptyPassword() {
+        userPassword.setError(getString(R.string.login_error_invalid_empty_password));
     }
 }
