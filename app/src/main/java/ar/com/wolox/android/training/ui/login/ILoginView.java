@@ -20,4 +20,6 @@ public interface ILoginView {
     void showLoading();
 
     void stopLoading();
+
+    void failConnection();
 }

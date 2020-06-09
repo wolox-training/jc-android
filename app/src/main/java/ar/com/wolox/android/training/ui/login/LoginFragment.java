@@ -95,4 +95,9 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
     public void stopLoading() {
         loadingProgressBar.setVisibility(View.INVISIBLE);
     }
+
+    @Override
+    public void failConnection() {
+        Toast.makeText(requireContext(), R.string.login_error_fail_connection, Toast.LENGTH_SHORT).show();
+    }
 }

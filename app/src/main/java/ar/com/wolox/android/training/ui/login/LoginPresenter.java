@@ -91,13 +91,15 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
                     userSession.setUsername(email);
                     userSession.setUserId(response.body().get(0).getId());
                     getView().showHomeScreen();
+                } else {
+                    getView().invalidUserCredentials();
                 }
                 getView().stopLoading();
             }
 
             @Override
             public void onFailure(@NonNull Call<List<User>> call, @NonNull Throwable t) {
-                getView().invalidUserCredentials();
+                getView().failConnection();
                 getView().stopLoading();
             }
         };
