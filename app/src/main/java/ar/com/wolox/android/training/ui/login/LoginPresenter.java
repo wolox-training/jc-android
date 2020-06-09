@@ -5,14 +5,13 @@ import android.util.Patterns;
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 import javax.inject.Inject;
 
 import ar.com.wolox.android.training.model.User;
+import ar.com.wolox.android.training.model.UserRequest;
 import ar.com.wolox.android.training.network.services.IUserService;
 import ar.com.wolox.android.training.utils.UserSession;
 import ar.com.wolox.wolmo.core.presenter.BasePresenter;
@@ -95,18 +94,15 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
 
             @Override
             public void onFailure(@NonNull Call<List<User>> call, @NonNull Throwable t) {
-                // Preguntar que pasa (muestro un set error o una alerta)
                 getView().invalidUserCredentials();
             }
         };
     }
 
     private void authenticateUser(final String email, final String password) {
-        IUserService userService = retrofitServices.getService(IUserService.class);
-        Map<String, String> userData = new HashMap<>();
-        userData.put("email", email);
-        userData.put("password", password);
-        userService.findUserByEmailAndPassword(userData).enqueue(doLogin(email));
+        final IUserService userService = retrofitServices.getService(IUserService.class);
+        final UserRequest userRequest = new UserRequest(email, password);
+        userService.findUserByEmailAndPassword(userRequest.getUserQuery()).enqueue(doLogin(email));
     }
 
     private void showErrors(final List<LoginErrors> errors) {
