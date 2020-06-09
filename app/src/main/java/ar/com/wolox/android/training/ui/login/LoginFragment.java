@@ -2,6 +2,8 @@ package ar.com.wolox.android.training.ui.login;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +20,7 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
     private TextView signUpButton;
     private TextView userEmail;
     private TextView userPassword;
+    private ProgressBar loadingProgressBar;
 
     public static LoginFragment newInstance() {
         return new LoginFragment();
@@ -30,6 +33,7 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
         signUpButton = getView().findViewById(R.id.vSignUpButton);
         userEmail = getView().findViewById(R.id.vLogInEmail);
         userPassword = getView().findViewById(R.id.vLogInPassword);
+        loadingProgressBar = getView().findViewById(R.id.vLoadingProgressBar);
     }
 
     @Override
@@ -80,5 +84,15 @@ public class LoginFragment extends WolmoFragment<LoginPresenter> implements ILog
     @Override
     public void invalidUserCredentials() {
         Toast.makeText(requireContext(), R.string.login_error_invalid_user_credentials, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showLoading() {
+        loadingProgressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void stopLoading() {
+        loadingProgressBar.setVisibility(View.INVISIBLE);
     }
 }

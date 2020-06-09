@@ -80,6 +80,7 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
     }
 
     private Callback<List<User>> doLogin(String email) {
+        getView().showLoading();
         return new Callback<List<User>>() {
 
             @Override
@@ -91,12 +92,13 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
                     userSession.setUserId(response.body().get(0).getId());
                     getView().showHomeScreen();
                 }
+                getView().stopLoading();
             }
 
             @Override
             public void onFailure(@NonNull Call<List<User>> call, @NonNull Throwable t) {
-                // Preguntar que pasa (muestro un set error o una alerta)
                 getView().invalidUserCredentials();
+                getView().stopLoading();
             }
         };
     }
