@@ -99,4 +99,17 @@
 		app:layout_constraintHorizontal_bias="0.0"
 		app:layout_constraintStart_toStartOf="parent" />
 
+	<ProgressBar
+		android:id="@+id/vLoadingProgressBar"
+		style="?android:attr/progressBarStyleLarge"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/spacing_large"
+		android:layout_marginBottom="@dimen/spacing_large"
+		android:visibility="invisible"
+		app:layout_constraintBottom_toTopOf="@+id/vTermsConditions"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/vSignUpButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
