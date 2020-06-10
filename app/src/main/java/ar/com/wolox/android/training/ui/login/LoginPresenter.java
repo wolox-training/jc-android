@@ -83,9 +83,7 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
 
             @Override
             public void onResponse(@NonNull final Call<List<User>> call, @NonNull final Response<List<User>> response) {
-                final List<User> users = response.body();
-                final boolean isValidUser = users != null && !users.isEmpty() && users.get(0) != null;
-                if (isValidUser) {
+                if (isFirstUserInListValid(response.body())) {
                     userSession.setUsername(email);
                     userSession.setUserId(response.body().get(0).getId());
                     getView().showHomeScreen();
@@ -97,6 +95,10 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
                 getView().invalidUserCredentials();
             }
         };
+    }
+
+    private boolean isFirstUserInListValid(final List<User> users) {
+        return users != null && !users.isEmpty() && users.get(0) != null;
     }
 
     private void authenticateUser(final String email, final String password) {
