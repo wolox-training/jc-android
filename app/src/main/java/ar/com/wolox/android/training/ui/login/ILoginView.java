@@ -14,4 +14,6 @@ public interface ILoginView {
     void invalidEmptyEmail();
 
     void invalidEmptyPassword();
+
+    void invalidUserCredentials();
 }

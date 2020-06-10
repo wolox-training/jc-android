@@ -7,6 +7,7 @@
     <string name="login_error_invalid_format_email"> The email format is invalid</string>
     <string name="login_error_invalid_empty_email"> The email field cannot be empty</string>
     <string name="login_error_invalid_empty_password"> The password field cannot be empty</string>
+    <string name="login_error_invalid_user_credentials"> Incorrect email or password</string>
 
     <!-- SIGN UP -->
     <string name="sign_up_hello_message">SIGN UP - HELLO</string>

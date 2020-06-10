@@ -2,14 +2,23 @@ package ar.com.wolox.android.training.ui.login;
 
 import android.util.Patterns;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import javax.inject.Inject;
 
+import ar.com.wolox.android.training.model.User;
+import ar.com.wolox.android.training.model.UserRequest;
+import ar.com.wolox.android.training.network.services.IUserService;
 import ar.com.wolox.android.training.utils.UserSession;
 import ar.com.wolox.wolmo.core.presenter.BasePresenter;
+import ar.com.wolox.wolmo.networking.retrofit.RetrofitServices;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * My <b>LoginPresenter</b>.
@@ -17,11 +26,13 @@ import ar.com.wolox.wolmo.core.presenter.BasePresenter;
 public class LoginPresenter extends BasePresenter<ILoginView> {
 
     private final UserSession userSession;
+    private final RetrofitServices retrofitServices;
     private static final String URL = "http://www.wolox.com.ar";
 
     @Inject
-    public LoginPresenter(final UserSession userSession) {
+    public LoginPresenter(final UserSession userSession, final RetrofitServices retrofitServices) {
         this.userSession = userSession;
+        this.retrofitServices = retrofitServices;
     }
 
     /**
@@ -35,8 +46,7 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
     public void onLoginButtonClicked(final String email, final String password) {
         final List<LoginErrors> errors = getErrors(email, password);
         if (errors.isEmpty()) {
-            userSession.setUsername(email);
-            Objects.requireNonNull(this.getView()).showHomeScreen();
+            authenticateUser(email, password);
         } else {
             showErrors(errors);
         }
@@ -66,6 +76,35 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
         }
 
         return errors;
+    }
+
+    private Callback<List<User>> doLogin(String email) {
+        return new Callback<List<User>>() {
+
+            @Override
+            public void onResponse(@NonNull final Call<List<User>> call, @NonNull final Response<List<User>> response) {
+                if (isFirstUserInListValid(response.body())) {
+                    userSession.setUsername(email);
+                    userSession.setUserId(response.body().get(0).getId());
+                    getView().showHomeScreen();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<User>> call, @NonNull Throwable t) {
+                getView().invalidUserCredentials();
+            }
+        };
+    }
+
+    private boolean isFirstUserInListValid(final List<User> users) {
+        return users != null && !users.isEmpty() && users.get(0) != null;
+    }
+
+    private void authenticateUser(final String email, final String password) {
+        final IUserService userService = retrofitServices.getService(IUserService.class);
+        final UserRequest userRequest = new UserRequest(email, password);
+        userService.findUserByEmailAndPassword(userRequest.getUserQuery()).enqueue(doLogin(email));
     }
 
     private void showErrors(final List<LoginErrors> errors) {
